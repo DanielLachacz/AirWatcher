@@ -13,7 +13,7 @@ import Realm
 class Data: Object, Decodable {
     
     @objc dynamic var id: Int = 0
-    @objc dynamic var stationId: Int = 0 //indifaction during the making of a new FavoriteItem
+    @objc dynamic var stationId: Int = 0 //indifaction during the making of the new FavoriteItem
     @objc dynamic var key: String = ""
     var values = List<Value>()
     

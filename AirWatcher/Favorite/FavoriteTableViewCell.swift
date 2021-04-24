@@ -65,28 +65,16 @@ class FavoriteTableViewCell: UITableViewCell {
         self.cityLabel.text = cellStation?.cityName ?? ""
         
         dataEntries =
-//            [
-//            FavoriteData(id: 0, key: "NO2", values: [FavoriteValue(date: "", value: 40.0)]),
-//            FavoriteData(id: 0, key: "PM10", values: [FavoriteValue(date: "", value: 0.0)]),
-//            FavoriteData(id: 0, key: "PM2.5", values: [FavoriteValue(date: "", value: 55.0)]),
-//            FavoriteData(id: 0, key: "O3", values: [FavoriteValue(date: "", value: 179.0)]),
-//            FavoriteData(id: 0, key: "NO2", values: [FavoriteValue(date: "", value: 400.0)]),
-//            FavoriteData(id: 0, key: "C6H6", values: [FavoriteValue(date: "", value: 100.0)])
-//            ]
         cellStation.sensors.compactMap{$0.data}
         dataEntries.removeAll{$0.values.first?.value == 0.0}
-       // contentView.addSubview(dataView)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-             //  self.backgroundColor = .clear
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     private func setupView() {
@@ -144,190 +132,199 @@ class FavoriteTableViewCell: UITableViewCell {
         
         var color: CGColor?
         var color2: CGColor?
-        
-        if key == "PM10" {
-            if value <= 20 {
+        switch key {
+        case "PM10":
+            switch value {
+            case 0...20:
                 color = brightGreen.cgColor
                 color2 = green.cgColor
-            }
-            else if value <= 50 {
-                color = brightLime.cgColor
-                color2 = lime.cgColor
-            }
-            else if value <= 80 {
-                color = brightYellow.cgColor
-                color2 = yellow.cgColor
-            }
-            else if value <= 110 {
-                color = brightOrange.cgColor
-                color2 = orange.cgColor
-            }
-            else if value <= 150 {
-                color = brightRed.cgColor
-                color2 = red.cgColor
-            }
-            else if value > 150 {
-                color = brightDarkRed.cgColor
-                color2 = darkRed.cgColor
-            }
-        }
-        else if key == "PM2.5" {
-            if value <= 13 {
-                color = brightGreen.cgColor
-                color2 = green.cgColor
-            }
-            else if value <= 35 {
-                color = brightLime.cgColor
-                color2 = lime.cgColor
-            }
-            else if value <= 55 {
-                color = brightYellow.cgColor
-                color2 = yellow.cgColor
-            }
-            else if value <= 75 {
-                color = brightOrange.cgColor
-                color2 = orange.cgColor
-            }
-            else if value <= 110 {
-                color = brightRed.cgColor
-                color2 = red.cgColor
-            }
-            else if value > 110 {
-                color = brightDarkRed.cgColor
-                color2 = darkRed.cgColor
-            }
-        }
-        else if key == "O3" {
-            if value <= 70 {
-                color = brightGreen.cgColor
-                color2 = green.cgColor
-            }
-            else if value <= 120 {
-                color = brightLime.cgColor
-                color2 = lime.cgColor
-            }
-            else if value <= 150 {
-                color = brightYellow.cgColor
-                color2 = yellow.cgColor
-            }
-            else if value <= 180 {
-                color = brightOrange.cgColor
-                color2 = orange.cgColor
-            }
-            else if value <= 240 {
-                color = brightRed.cgColor
-                color2 = red.cgColor
-            }
-            else if value > 240 {
-                color = brightDarkRed.cgColor
-                color2 = darkRed.cgColor
-            }
-        }
-        else if key == "NO2" {
-            if value <= 40 {
-                color = brightGreen.cgColor
-                color2 = green.cgColor
-            }
-            else if value <= 100 {
-                color = brightLime.cgColor
-                color2 = lime.cgColor
-            }
-            else if value <= 150 {
-                color = brightYellow.cgColor
-                color2 = yellow.cgColor
-            }
-            else if value <= 200 {
-                color = brightOrange.cgColor
-                color2 = orange.cgColor
-            }
-            else if value <= 400 {
-                color = brightRed.cgColor
-                color2 = red.cgColor
-            }
-            else if value > 400 {
-                color = brightDarkRed.cgColor
-                color2 = darkRed.cgColor
-            }
             
-        }
-        else if key == "SO2" {
-            if value <= 50 {
-                color = brightGreen.cgColor
-                color2 = green.cgColor
-            }
-            else if value <= 100 {
+            case 20.1...50:
                 color = brightLime.cgColor
                 color2 = lime.cgColor
-            }
-            else if value <= 200 {
+            
+            case 50.1...80:
                 color = brightYellow.cgColor
                 color2 = yellow.cgColor
-            }
-            else if value <= 350 {
+            
+            case 80.1...110:
                 color = brightOrange.cgColor
                 color2 = orange.cgColor
+            
+            case 110.1...150:
+                color = brightRed.cgColor
+                color2 = red.cgColor
+            
+           default:
+                color = brightDarkRed.cgColor
+                color2 = darkRed.cgColor
+            
             }
-            else if value <= 500 {
+    
+        case "PM2.5":
+            switch value {
+            case 0...13:
+                color = brightGreen.cgColor
+                color2 = green.cgColor
+            
+                case 13.1...35:
+                color = brightLime.cgColor
+                color2 = lime.cgColor
+            
+                case 35.1...55:
+                color = brightYellow.cgColor
+                color2 = yellow.cgColor
+            
+                case 55.1...75:
+                color = brightOrange.cgColor
+                color2 = orange.cgColor
+            
+                case 75.1...110:
+                color = brightRed.cgColor
+                color2 = red.cgColor
+            
+                default:
+                color = brightDarkRed.cgColor
+                color2 = darkRed.cgColor
+            
+            }
+        
+        case "O3":
+            switch value {
+            case 0...70:
+                color = brightGreen.cgColor
+                color2 = green.cgColor
+            
+            case 70.1...120:
+                color = brightLime.cgColor
+                color2 = lime.cgColor
+            
+            case 120.1...150:
+                color = brightYellow.cgColor
+                color2 = yellow.cgColor
+            
+            case 150.1...180:
+                color = brightOrange.cgColor
+                color2 = orange.cgColor
+            
+            case 180.1...240:
+                color = brightRed.cgColor
+                color2 = red.cgColor
+            
+            default:
+                color = brightDarkRed.cgColor
+                color2 = darkRed.cgColor
+            }
+        
+        case "NO2":
+            switch value {
+            case 0...40:
+                color = brightGreen.cgColor
+                color2 = green.cgColor
+            
+            case 40.1...100:
+                color = brightLime.cgColor
+                color2 = lime.cgColor
+            
+            case 100.1...150:
+                color = brightYellow.cgColor
+                color2 = yellow.cgColor
+            
+            case 150.1...200:
+                color = brightOrange.cgColor
+                color2 = orange.cgColor
+            
+            case 200.1...400:
+                color = brightRed.cgColor
+                color2 = red.cgColor
+            
+            default:
+                color = brightDarkRed.cgColor
+                color2 = darkRed.cgColor
+        }
+        case "SO2":
+            switch value {
+            case 0...50:
+                color = brightGreen.cgColor
+                color2 = green.cgColor
+            
+            case 50.1...100:
+                color = brightLime.cgColor
+                color2 = lime.cgColor
+            
+            case 100.1...200:
+                color = brightYellow.cgColor
+                color2 = yellow.cgColor
+            
+            case 200.1...350:
+                color = brightOrange.cgColor
+                color2 = orange.cgColor
+            
+            case 350.1...500:
                color = brightRed.cgColor
                color2 = red.cgColor
-            }
-            else if value > 400 {
+            
+            default:
                 color = brightDarkRed.cgColor
                 color2 = darkRed.cgColor
-            }
         }
-        else if key == "C6H6" {
-            if value <= 6.00 {
+        case "C6H6":
+            switch value {
+            case 0...6.00:
                 color = brightGreen.cgColor
                 color2 = green.cgColor
-            }
-            else if value <= 11 {
+            
+            case 6.1...11:
                 color = brightLime.cgColor
                 color2 = lime.cgColor
-            }
-            else if value <= 16 {
+            
+            case 11.1...16:
                 color = brightYellow.cgColor
                 color2 = yellow.cgColor
-            }
-            else if value <= 21 {
+            
+            case 16.1...21:
                 color = brightOrange.cgColor
                 color2 = orange.cgColor
-            }
-            else if value <= 51 {
+            
+            case 21.1...51:
                 color = brightRed.cgColor
                 color2 = red.cgColor
-            }
-            else if value > 51 {
+            
+            default:
                color = brightDarkRed.cgColor
                 color2 = darkRed.cgColor
-            }
         }
-        else if key == "CO" {
-            if value <= 3 {
+        case "CO":
+            switch value {
+            case 0...3:
                 color = brightGreen.cgColor
                 color2 = green.cgColor
-            }
-            else if value <= 7 {
+            
+            case 3.1...7:
                 color = brightLime.cgColor
                 color2 = lime.cgColor
-            }
-            else if value <= 11 {
+            
+            case 7.1...11:
                 color = brightYellow.cgColor
                 color2 = yellow.cgColor
-            }
-            else if value <= 15 {
+            
+            case 11.1...15:
                 color = brightOrange.cgColor
                 color2 = orange.cgColor
-            }
-            else if value <= 21 {
+            
+            case 15.1...21:
                 color = brightRed.cgColor
                 color2 = red.cgColor
-            }
-            else if value > 21 {
+            
+            default:
                 color = brightDarkRed.cgColor
                 color2 = darkRed.cgColor
             }
+        
+        default:
+        print("default value color")
         }
+        
         
         barLayer.backgroundColor = color
         barLayer2.backgroundColor = color2

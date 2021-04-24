@@ -24,7 +24,6 @@ class AddViewController: UIViewController {
 
         addTableView.rx.setDelegate(self).disposed(by: disposeBag)
         bindTableView()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +34,7 @@ class AddViewController: UIViewController {
         viewModel.addItems.bind(to: addTableView.rx.items(cellIdentifier: "addCell", cellType: AddTableViewCell.self)) { (row, item, cell)
             in
             cell.cellAdd = item
+            
         }.disposed(by: disposeBag)
         
         addTableView.rx.modelSelected(AddItem.self)
@@ -43,6 +43,7 @@ class AddViewController: UIViewController {
                     .map { item }
         }
         .bind { [viewModel] in
+
             viewModel.addStationItem(addItem: $0)
         }
         .disposed(by: disposeBag)

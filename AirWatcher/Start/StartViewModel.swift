@@ -12,18 +12,18 @@ import RealmSwift
 
 class StartViewModel: ObservableObject {
     
-    private var apiService: APIServiceProtocol?
+    private var apiService: APIServiceProtocol
     private var persistenceService: PersistenceServiceProtocol?
     let disposeBag = DisposeBag()
     public let saveingError: PublishSubject<Bool> = PublishSubject()
-    var sensorsList = [Sensor]()
-    var stationsList = [Station]()
-    var addItemList = [AddItem]()
-    var addItemList2 = [AddItem]()
-    var sensorItemList = [SensorItem]()
-    var dataList = [Data]()
-    var dataList2 = [Data]()
-    var dataItemList = [DataItem]()
+    var sensorArray = [Sensor]()
+    var addItemArray = [AddItem]()
+    var addItemArray2 = [AddItem]()
+    var sensorItemArray = [SensorItem]()
+    var dataArray = [Data]()
+    var dataArray2 = [Data]()
+    var dataItemArray = [DataItem]()
+    var airQualityIndexArray = [AirQualityIndex]()
     
     
     init(apiService: APIServiceProtocol = APIService(), persistenceService: PersistenceServiceProtocol = PersistenceService()) {
@@ -37,9 +37,9 @@ class StartViewModel: ObservableObject {
                 return
     }
 
-            let stationsObservable = apiService?.fetchStations(url: giosAllStationsURL)
+            let stationsObservable = apiService.fetchStations(url: giosAllStationsURL)
             
-            stationsObservable?.subscribe(
+            stationsObservable.subscribe(
                 onNext: { (jsonResponse) in
                     //save downloaded data to the database
                     do {
@@ -47,10 +47,10 @@ class StartViewModel: ObservableObject {
                         
                         if jsonResponse.count > 0 {
                         self.fetchSensors(stations: jsonResponse)
-                        self.stationsList.append(contentsOf: jsonResponse)
+                        self.fetchAirQualityIndex(stations: jsonResponse)
                         }
                         else {
-                            print("VM STATIONS: za malo")
+                            print("StartViewModel Error: fetchStations not enough jsonResponse.count")
                         }
                     }
                     catch {
@@ -81,16 +81,16 @@ class StartViewModel: ObservableObject {
                 return
             }
 
-           let sensorsObservable = apiService?.fetchSensors(url: giosAllSensorsURL)
+           let sensorsObservable = apiService.fetchSensors(url: giosAllSensorsURL)
             
-            sensorsObservable?.subscribe(
+            sensorsObservable.subscribe(
                 onNext: { (jsonResponse) in
-                    self.sensorsList.append(contentsOf: jsonResponse)
+                    self.sensorArray.append(contentsOf: jsonResponse)
                     
                     //save downloaded data to the database
                     if(index + 1 == ids.count) {
                         do {
-                            try self.persistenceService?.addSensors(sensors: self.sensorsList)
+                            try self.persistenceService?.addSensors(sensors: self.sensorArray)
                             self.fetchSavedAddItems()
                         }
                         catch {
@@ -118,11 +118,11 @@ class StartViewModel: ObservableObject {
     
     func fetchSavedAddItems() {
         do {
-            addItemList = try persistenceService!.fetchAddItems()
-            if addItemList.count > 0 {
-                fetchData(add: addItemList)
+            addItemArray = try persistenceService!.fetchAddItems().toArray(ofType: AddItem.self)
+            if addItemArray.count > 0 {
+                fetchData(add: addItemArray)
             }
-            else if addItemList.count <= 0 {
+            else if addItemArray.count <= 0 {
                  self.saveingError.onNext(false)
             }
         } catch {
@@ -146,23 +146,22 @@ class StartViewModel: ObservableObject {
             countId += [x]
             let stationId = stationIds[index]
           
-            let dataObservable = apiService!.fetchData(url: giosDataURL)
+            let dataObservable = apiService.fetchData(url: giosDataURL)
             dataObservable.subscribe(
                 onNext: { (jsonResponse) in
-                    self.dataList += [jsonResponse]
+                    self.dataArray += [jsonResponse]
                     let valuesArray = Array(jsonResponse.values)
                     let data = Data(id: x, stationId: stationId, key: jsonResponse.key, values: valuesArray)
                       
                     dataArray.append(data)
                     
-                    if( self.dataList.count == countIndex.count) {
+                    if( self.dataArray.count == countIndex.count) {
                         do {
                             try self.persistenceService!.addData(data: dataArray)
                         }
                         catch {
                             print("Error StartViewModel: in fetchData during saving the data")
                         }
-                        self.saveingError.onNext(false)
                     }
             },
                 onError: { (error) in
@@ -177,20 +176,42 @@ class StartViewModel: ObservableObject {
         }
     }
     
-//    func setStationItemsWithData(addItemList: [AddItem], dataItemList: [DataItem]) {
-//        var stationItems = [AddItem]()
-//        stationItems.append(contentsOf: addItemList)
-//
-//        let addItemSensors = stationItems.flatMap{$0.sensors}
-//
-//        dataItemList.forEach { data in
-//            guard let index = addItemSensors.firstIndex(where: {$0.id == data.id})
-//                else {
-//                    print("Failed to find a AddItem for Data \(data.id)")
-//                    return
-//            }
-//        }
-//    }
+    func fetchAirQualityIndex(stations: [Station]) {
+        let ids = stations.map{ $0.id }
+        var countIndex = [Int]()
+        
+        for (index, id) in ids.enumerated() {
+            guard let airQualityIndexURL = URL(string: "https://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/\(id)") else {
+                return
+            }
+            countIndex += [index]
+            
+            let airQualityIndexObservable = apiService.fetchAirQualityIndex(url: airQualityIndexURL)
+            airQualityIndexObservable.subscribe(
+                onNext: { (jsonResponse) in
+                    self.airQualityIndexArray += [jsonResponse]
+                    
+                    if self.airQualityIndexArray.count == countIndex.count {
+                        do {
+                            try self.persistenceService!.addAirQualityIndex(air: self.airQualityIndexArray)
+                        }
+                        catch {
+                            print("Error StartViewModel: in fetchData during saving the data")
+                        }
+                        self.saveingError.onNext(false)
+                    }
+            },
+                onError: { (error) in
+                    print("MapViewModel Error: fetchAirQualityIndex \(error)")
+            },
+                onCompleted: {
+                    print("MapViewModel Completed: fetchAirQualityIndex")
+            },
+                onDisposed: {
+                    print("MapViewModel Disposed: fetchAirQualityIndex")
+                }).disposed(by: disposeBag)
+        }
+    }
     
 }
 

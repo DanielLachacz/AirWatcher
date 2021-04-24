@@ -1,5 +1,6 @@
 
 # platform :ios, '9.0'
+platform :ios, '13.7'
 
 target 'AirWatcher' do
  
@@ -9,8 +10,9 @@ target 'AirWatcher' do
   pod 'RxCocoa', '~> 5'
   pod 'RealmSwift'
   pod "RxRealm"
-  pod 'Charts'
-  pod 'ChartsRealm'
+#  pod 'Charts'
+#  pod 'ChartsRealm'
+  pod 'RxMKMapView'
 
   # Pods for AirWatcher
 

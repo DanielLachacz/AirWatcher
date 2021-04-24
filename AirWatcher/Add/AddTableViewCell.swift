@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AddTableViewCell: UITableViewCell {
     
@@ -14,6 +15,8 @@ class AddTableViewCell: UITableViewCell {
     @IBOutlet weak var streetLabel: UILabel!
     @IBOutlet weak var parameterLabel: UILabel!
     @IBOutlet weak var starImageView: UIImageView!
+    let falseValue = RealmOptional<Bool>(false)
+    let trueValue = RealmOptional<Bool>(true)
     
     
     var cellAdd : AddItem! {
@@ -28,6 +31,11 @@ class AddTableViewCell: UITableViewCell {
         let array = cellAdd?.sensors.map({(sensorItem: SensorItem) -> String in
             (sensorItem.param?.paramCode) ?? ""}).joined(separator: ", ")
         self.parameterLabel.text = String(describing: array!)
+        if cellAdd?.added.value == false {
+            self.starImageView.isHidden = true
+        } else {
+            self.starImageView.isHidden = false
+        }
     }
     
     override func awakeFromNib() {

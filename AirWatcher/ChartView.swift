@@ -16,7 +16,6 @@ class ChartView: UIView {
     
     let space: CGFloat = 15.0
     let barHeight: CGFloat = 15.0
-    //let contentSpace: CGFloat = 70.0
     
     var dataEntries: [FavoriteData] = [] {
         
@@ -36,8 +35,7 @@ class ChartView: UIView {
        // stackView.sizeThatFits(CGSize(width: frame.size.width, height: barHeight + space * CGFloat(dataEntries.count) + contentSpace))
         mainLayer.frame = CGRect(x: 0, y: 0, width: stackView.bounds.width.rounded(), height: stackView.intrinsicContentSize.height)
         
-       // print("data: \(dataEntries.compactMap{$0.values.first}.map{$0.value})")
-        let entries = dataEntries.compactMap{$0.values.first}.map{$0.value}
+       
         
         //tutaj trzeba powalczyc zeby pozbyc sie pustych paskow
         for i in 0..<dataEntries.count {

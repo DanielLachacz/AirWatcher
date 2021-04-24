@@ -1,7 +1,4 @@
 PODS:
-  - Charts (3.6.0):
-    - Charts/Core (= 3.6.0)
-  - Charts/Core (3.6.0)
   - Realm (5.4.0):
     - Realm/Headers (= 5.4.0)
   - Realm/Headers (5.4.0)
@@ -12,6 +9,9 @@ PODS:
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
+  - RxMKMapView (5.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
   - RxRealm (3.1.0):
     - RealmSwift (~> 5.2)
     - RxSwift (~> 5.0)
@@ -23,10 +23,10 @@ PODS:
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
-  - Charts
   - RealmSwift
   - RxBlocking (~> 5)
   - RxCocoa (~> 5)
+  - RxMKMapView
   - RxRealm
   - RxSwift (~> 5)
   - RxTest (~> 5)
@@ -34,11 +34,11 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Charts
     - Realm
     - RealmSwift
     - RxBlocking
     - RxCocoa
+    - RxMKMapView
     - RxRealm
     - RxRelay
     - RxSwift
@@ -46,17 +46,17 @@ SPEC REPOS:
     - SVProgressHUD
 
 SPEC CHECKSUMS:
-  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Realm: 8949757d76e2451a53d727954c607e49c2542b77
   RealmSwift: 0b7d7121e842724188123c6086831ae6d2952050
   RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxMKMapView: 7b19fc545887314851ea67b12193bc8c6004dcb5
   RxRealm: 50e5fe5c1f22518205afbb313fbc5580d73bc586
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxTest: 711632d5644dffbeb62c936a521b5b008a1e1faa
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 984595b7ef9e1de9610507a13d886f72229236f9
+PODFILE CHECKSUM: 76b9490ae190d30d0c4b5d5ed22335f9206a5c05
 
 COCOAPODS: 1.10.0

@@ -26,15 +26,14 @@ class StartViewController: UIViewController {
         fetchData()
     }
     
-    //check if data exists and go to another view
+    //check if data exists and go to the another view
     func fetchData() {
-        
         self.viewModel.saveingError.observeOn(MainScheduler.instance)
         .subscribe(onNext: { (error) in
             if error == false {
                 SVProgressHUD.dismiss()
                 self.showTabBarController()
-
+                print("START FALSE")
             } else if error == true {
                 print("ERROR fetchData StartViewController: \(error)")
             }

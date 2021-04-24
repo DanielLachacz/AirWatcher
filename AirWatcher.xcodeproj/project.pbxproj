@@ -27,10 +27,13 @@
 		D5A63CBF2561504600F2B826 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A63CBE2561504600F2B826 /* FavoriteTableViewCell.swift */; };
 		D5A63CC22561541500F2B826 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A63CC12561541500F2B826 /* ExternalAccessory.framework */; };
 		D5AC62E125751AA800D42650 /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC62E025751AA800D42650 /* AddViewModel.swift */; };
+		D5AE4E69262219A500279CC1 /* MapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AE4E68262219A500279CC1 /* MapItem.swift */; };
+		D5B3AFE52623094500D941E1 /* AirQualityIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B3AFE42623094500D941E1 /* AirQualityIndex.swift */; };
 		D5D99E9325765B2400E20A07 /* AddItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D99E9225765B2400E20A07 /* AddItem.swift */; };
 		D5E3DFA525E7A9BA006E55B8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3DFA425E7A9BA006E55B8 /* MapViewController.swift */; };
 		D5E3DFA725E7B2A9006E55B8 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3DFA625E7B2A9006E55B8 /* ChartView.swift */; };
 		D5EC2C9D2567CDF7008C82D9 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC2C9C2567CDF7008C82D9 /* Sensor.swift */; };
+		D5EC89B9261F686D009E3CAA /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC89B8261F686D009E3CAA /* MapViewModel.swift */; };
 		D5FB05EA2577FBB200D0160B /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FB05E92577FBB200D0160B /* AddTableViewCell.swift */; };
 		D5FD36E8256EBE78008FD8F6 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD36E7256EBE78008FD8F6 /* Data.swift */; };
 		D5FD36EB256EC235008FD8F6 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD36EA256EC235008FD8F6 /* AddViewController.swift */; };
@@ -88,10 +91,13 @@
 		D5A63CC02561541500F2B826 /* AirWatcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AirWatcher.entitlements; sourceTree = "<group>"; };
 		D5A63CC12561541500F2B826 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		D5AC62E025751AA800D42650 /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
+		D5AE4E68262219A500279CC1 /* MapItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItem.swift; sourceTree = "<group>"; };
+		D5B3AFE42623094500D941E1 /* AirQualityIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityIndex.swift; sourceTree = "<group>"; };
 		D5D99E9225765B2400E20A07 /* AddItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItem.swift; sourceTree = "<group>"; };
 		D5E3DFA425E7A9BA006E55B8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D5E3DFA625E7B2A9006E55B8 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		D5EC2C9C2567CDF7008C82D9 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
+		D5EC89B8261F686D009E3CAA /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		D5FB05E92577FBB200D0160B /* AddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
 		D5FD36E7256EBE78008FD8F6 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		D5FD36EA256EC235008FD8F6 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +244,8 @@
 				D5FD36E7256EBE78008FD8F6 /* Data.swift */,
 				D5D99E9225765B2400E20A07 /* AddItem.swift */,
 				D58805CF25B0569E002FCC0A /* FavoriteItem.swift */,
+				D5AE4E68262219A500279CC1 /* MapItem.swift */,
+				D5B3AFE42623094500D941E1 /* AirQualityIndex.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				D5E3DFA425E7A9BA006E55B8 /* MapViewController.swift */,
+				D5EC89B8261F686D009E3CAA /* MapViewModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -546,6 +555,8 @@
 				D5FD36E8256EBE78008FD8F6 /* Data.swift in Sources */,
 				D5A63CB02561494000F2B826 /* APIService.swift in Sources */,
 				D5E3DFA725E7B2A9006E55B8 /* ChartView.swift in Sources */,
+				D5B3AFE52623094500D941E1 /* AirQualityIndex.swift in Sources */,
+				D5EC89B9261F686D009E3CAA /* MapViewModel.swift in Sources */,
 				D5A63CBB25614F1000F2B826 /* FavoriteViewModel.swift in Sources */,
 				D58805D025B0569E002FCC0A /* FavoriteItem.swift in Sources */,
 				D5A63C802561401300F2B826 /* SceneDelegate.swift in Sources */,
@@ -554,6 +565,7 @@
 				D5FB05EA2577FBB200D0160B /* AddTableViewCell.swift in Sources */,
 				D5A63CBF2561504600F2B826 /* FavoriteTableViewCell.swift in Sources */,
 				D5D99E9325765B2400E20A07 /* AddItem.swift in Sources */,
+				D5AE4E69262219A500279CC1 /* MapItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
