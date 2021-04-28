@@ -18,6 +18,7 @@ class FavoriteTableViewCell: UITableViewCell {
     let space: CGFloat = 15.0
     let barHeight: CGFloat = 15.0
     var valueList: [Double] = []
+    private let colors = Colors()
     
     var dataEntries: [FavoriteData] = [] {
         didSet {
@@ -27,7 +28,6 @@ class FavoriteTableViewCell: UITableViewCell {
             for i in 0..<dataEntries.count {
                 showEntry(index: i, data: dataEntries[i])
         }
-            
         }
     }
     
@@ -116,19 +116,6 @@ class FavoriteTableViewCell: UITableViewCell {
         let barLayer2 = CALayer()
         barLayer.frame = CGRect(x: 50.0, y: yPos, width: xPosMax, height: 20.0)
         barLayer2.frame = CGRect(x: 50.0, y: yPos, width: xPos, height: 20.0)
-        //colors
-        let green = UIColor(red: 52/255, green: 220/255, blue: 89/255, alpha: 1.0)
-        let lime = UIColor(red: 173/255, green: 255/255, blue:47/255, alpha: 1.0)
-        let yellow = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 1.0)
-        let orange = UIColor(red: 255/255, green: 149/255, blue: 0/255, alpha: 1.0)
-        let red = UIColor(red: 255/255, green: 59/255, blue: 48/255, alpha: 1.0)
-        let darkRed = UIColor(red: 153/255, green: 0/255, blue: 0/255, alpha: 1.0)
-        let brightGreen = UIColor(red: 204/255, green: 255/255, blue: 204/255, alpha: 1.0)
-        let brightLime = UIColor(red: 229/255, green: 255/255, blue:204/255, alpha: 1.0)
-        let brightYellow = UIColor(red: 255/255, green: 255/255, blue: 204/255, alpha: 1.0)
-        let brightOrange = UIColor(red: 255/255, green: 229/255, blue: 204/255, alpha: 1.0)
-        let brightRed = UIColor(red: 255/255, green: 204/255, blue: 204/255, alpha: 1.0)
-        let brightDarkRed = UIColor(red: 153/255, green: 133/255, blue: 153/255, alpha: 1.0)
         
         var color: CGColor?
         var color2: CGColor?
@@ -136,189 +123,189 @@ class FavoriteTableViewCell: UITableViewCell {
         case "PM10":
             switch value {
             case 0...20:
-                color = brightGreen.cgColor
-                color2 = green.cgColor
+                color = colors.brightGreen.cgColor
+                color2 = colors.green.cgColor
             
             case 20.1...50:
-                color = brightLime.cgColor
-                color2 = lime.cgColor
+                color = colors.brightLime.cgColor
+                color2 = colors.lime.cgColor
             
             case 50.1...80:
-                color = brightYellow.cgColor
-                color2 = yellow.cgColor
+                color = colors.brightYellow.cgColor
+                color2 = colors.yellow.cgColor
             
             case 80.1...110:
-                color = brightOrange.cgColor
-                color2 = orange.cgColor
+                color = colors.brightOrange.cgColor
+                color2 = colors.orange.cgColor
             
             case 110.1...150:
-                color = brightRed.cgColor
-                color2 = red.cgColor
+                color = colors.brightRed.cgColor
+                color2 = colors.red.cgColor
             
            default:
-                color = brightDarkRed.cgColor
-                color2 = darkRed.cgColor
+            color = colors.brightDarkRed.cgColor
+            color2 = colors.darkRed.cgColor
             
             }
     
         case "PM2.5":
             switch value {
             case 0...13:
-                color = brightGreen.cgColor
-                color2 = green.cgColor
+                color = colors.brightGreen.cgColor
+                color2 = colors.green.cgColor
             
                 case 13.1...35:
-                color = brightLime.cgColor
-                color2 = lime.cgColor
+                color = colors.brightLime.cgColor
+                color2 = colors.lime.cgColor
             
                 case 35.1...55:
-                color = brightYellow.cgColor
-                color2 = yellow.cgColor
+                color = colors.brightYellow.cgColor
+                color2 = colors.yellow.cgColor
             
                 case 55.1...75:
-                color = brightOrange.cgColor
-                color2 = orange.cgColor
+                color = colors.brightOrange.cgColor
+                color2 = colors.orange.cgColor
             
                 case 75.1...110:
-                color = brightRed.cgColor
-                color2 = red.cgColor
+                color = colors.brightRed.cgColor
+                color2 = colors.red.cgColor
             
                 default:
-                color = brightDarkRed.cgColor
-                color2 = darkRed.cgColor
+                color = colors.brightDarkRed.cgColor
+                color2 = colors.darkRed.cgColor
             
             }
         
         case "O3":
             switch value {
             case 0...70:
-                color = brightGreen.cgColor
-                color2 = green.cgColor
+                color = colors.brightGreen.cgColor
+                color2 = colors.green.cgColor
             
             case 70.1...120:
-                color = brightLime.cgColor
-                color2 = lime.cgColor
+                color = colors.brightLime.cgColor
+                color2 = colors.lime.cgColor
             
             case 120.1...150:
-                color = brightYellow.cgColor
-                color2 = yellow.cgColor
+                color = colors.brightYellow.cgColor
+                color2 = colors.yellow.cgColor
             
             case 150.1...180:
-                color = brightOrange.cgColor
-                color2 = orange.cgColor
+                color = colors.brightOrange.cgColor
+                color2 = colors.orange.cgColor
             
             case 180.1...240:
-                color = brightRed.cgColor
-                color2 = red.cgColor
+                color = colors.brightRed.cgColor
+                color2 = colors.red.cgColor
             
             default:
-                color = brightDarkRed.cgColor
-                color2 = darkRed.cgColor
+                color = colors.brightDarkRed.cgColor
+                color2 = colors.darkRed.cgColor
             }
         
         case "NO2":
             switch value {
             case 0...40:
-                color = brightGreen.cgColor
-                color2 = green.cgColor
+                color = colors.brightGreen.cgColor
+                color2 = colors.green.cgColor
             
             case 40.1...100:
-                color = brightLime.cgColor
-                color2 = lime.cgColor
+                color = colors.brightLime.cgColor
+                color2 = colors.lime.cgColor
             
             case 100.1...150:
-                color = brightYellow.cgColor
-                color2 = yellow.cgColor
+                color = colors.brightYellow.cgColor
+                color2 = colors.yellow.cgColor
             
             case 150.1...200:
-                color = brightOrange.cgColor
-                color2 = orange.cgColor
+                color = colors.brightOrange.cgColor
+                color2 = colors.orange.cgColor
             
             case 200.1...400:
-                color = brightRed.cgColor
-                color2 = red.cgColor
+                color = colors.brightRed.cgColor
+                color2 = colors.red.cgColor
             
             default:
-                color = brightDarkRed.cgColor
-                color2 = darkRed.cgColor
+                color = colors.brightDarkRed.cgColor
+                color2 = colors.darkRed.cgColor
         }
         case "SO2":
             switch value {
             case 0...50:
-                color = brightGreen.cgColor
-                color2 = green.cgColor
+                color = colors.brightGreen.cgColor
+                color2 = colors.green.cgColor
             
             case 50.1...100:
-                color = brightLime.cgColor
-                color2 = lime.cgColor
+                color = colors.brightLime.cgColor
+                color2 = colors.lime.cgColor
             
             case 100.1...200:
-                color = brightYellow.cgColor
-                color2 = yellow.cgColor
+                color = colors.brightYellow.cgColor
+                color2 = colors.yellow.cgColor
             
             case 200.1...350:
-                color = brightOrange.cgColor
-                color2 = orange.cgColor
+                color = colors.brightOrange.cgColor
+                color2 = colors.orange.cgColor
             
             case 350.1...500:
-               color = brightRed.cgColor
-               color2 = red.cgColor
+               color = colors.brightRed.cgColor
+               color2 = colors.red.cgColor
             
             default:
-                color = brightDarkRed.cgColor
-                color2 = darkRed.cgColor
+                color = colors.brightDarkRed.cgColor
+                color2 = colors.darkRed.cgColor
         }
         case "C6H6":
             switch value {
             case 0...6.00:
-                color = brightGreen.cgColor
-                color2 = green.cgColor
+                color = colors.brightGreen.cgColor
+                color2 = colors.green.cgColor
             
             case 6.1...11:
-                color = brightLime.cgColor
-                color2 = lime.cgColor
+                color = colors.brightLime.cgColor
+                color2 = colors.lime.cgColor
             
             case 11.1...16:
-                color = brightYellow.cgColor
-                color2 = yellow.cgColor
+                color = colors.brightYellow.cgColor
+                color2 = colors.yellow.cgColor
             
             case 16.1...21:
-                color = brightOrange.cgColor
-                color2 = orange.cgColor
+                color = colors.brightOrange.cgColor
+                color2 = colors.orange.cgColor
             
             case 21.1...51:
-                color = brightRed.cgColor
-                color2 = red.cgColor
+                color = colors.brightRed.cgColor
+                color2 = colors.red.cgColor
             
             default:
-               color = brightDarkRed.cgColor
-                color2 = darkRed.cgColor
+               color = colors.brightDarkRed.cgColor
+                color2 = colors.darkRed.cgColor
         }
         case "CO":
             switch value {
             case 0...3:
-                color = brightGreen.cgColor
-                color2 = green.cgColor
+                color = colors.brightGreen.cgColor
+                color2 = colors.green.cgColor
             
             case 3.1...7:
-                color = brightLime.cgColor
-                color2 = lime.cgColor
+                color = colors.brightLime.cgColor
+                color2 = colors.lime.cgColor
             
             case 7.1...11:
-                color = brightYellow.cgColor
-                color2 = yellow.cgColor
+                color = colors.brightYellow.cgColor
+                color2 = colors.yellow.cgColor
             
             case 11.1...15:
-                color = brightOrange.cgColor
-                color2 = orange.cgColor
+                color = colors.brightOrange.cgColor
+                color2 = colors.orange.cgColor
             
             case 15.1...21:
-                color = brightRed.cgColor
-                color2 = red.cgColor
+                color = colors.brightRed.cgColor
+                color2 = colors.red.cgColor
             
             default:
-                color = brightDarkRed.cgColor
-                color2 = darkRed.cgColor
+                color = colors.brightDarkRed.cgColor
+                color2 = colors.darkRed.cgColor
             }
         
         default:

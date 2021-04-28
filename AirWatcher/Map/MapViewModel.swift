@@ -61,19 +61,19 @@ class MapViewModel: ObservableObject {
                 return
             }
             let mapItem = MapItem(
-                id: air.id, name: station.stationName, coordinate: CLLocationCoordinate2D(
+                id: air.id,
+                name: station.stationName,
+                coordinate: CLLocationCoordinate2D(
                     latitude: Double(station.gegrLat) ?? 0.0,
-                    longitude: Double(station.gegrLon) ?? 0.0))
+                    longitude: Double(station.gegrLon) ?? 0.0),
+                indexLevel: air.stIndexLevel?.indexLevelName ?? "")
             
             mapItemArray.append(mapItem)
-            print("mapItemArray: \(mapItemArray.count)")
         }
         if (mapItemArray.count > 0) {
-            print("bigger than 0")
             self.mapItemArrayBS.onNext(mapItemArray)
             error.onNext(false)
         } else {
-            print("zero")
             self.error.onNext(true)
         }
         self.mapItemArrayBS.onNext(mapItemArray)

@@ -12,39 +12,38 @@ import RxSwift
 import RxCocoa
 import RxMKMapView
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    
     var viewModel = MapViewModel()
     private let disposeBag = DisposeBag()
+    private let colors = Colors()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
         view.addSubview(mapView)
-        _ = CLLocation(latitude: 52.069349, longitude: 19.480456)
-        //mapView.centerToLocation(initialLocations)
-
-        setAnnotation()
-        //to na gorze dziala, wiec teraz pozostaje stworzenie listy MapItem, customowych adnotacji itd.
+        _ = CLLocation(latitude: 52.069349, longitude: 19.480456) //Start map in the center of the country (Poland)
         
         mapView.rx.willStartLoadingMap
         .asDriver()
         .drive(onNext: { print("map started loading")})
         .disposed(by: disposeBag)
         
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.viewModel.error.observeOn(MainScheduler.instance)
             .subscribe(onNext: { (error) in
                 if error == false {
-                    print("MAP FALSE")
                     self.requestForAnnotations()
                 }
                 else {
-                    print("ViewModel Error = TRUE")
+                    print("MapViewController: MapItem Error ")
                 }
             },
                        onError: { (error) in
@@ -59,12 +58,17 @@ class MapViewController: UIViewController {
     }
     
     func requestForAnnotations() {
-        let observable = viewModel.mapItemArrayBS //Observable.of(viewModel.mapItemArrayBS)
+        let observable = viewModel.mapItemArrayBS
         
         observable.subscribe(
             onNext: { (response) in
-                print("RESPONSE: \(response.count)")
-        
+                for i in response.indices {
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = response[i].coordinate
+                    annotation.title = response[i].name
+                    annotation.subtitle = response[i].indexLevel
+                    self.mapView.addAnnotation(annotation)
+                }
         },
             onError: { (error) in
                 print("MapViewModel Error: fetchSensor \(error)")
@@ -78,9 +82,31 @@ class MapViewController: UIViewController {
         
     }
     
-    func setAnnotation() {
-        let mapItem = MapItem(id: 0, name: "Roentgena", coordinate: CLLocationCoordinate2D(latitude: 52.146547, longitude: 21.028379))
-        mapView.addAnnotation(mapItem)
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "MyMarker")
+        
+        annotationView.markerTintColor = UIColor.blue
+        annotationView.glyphText = ""
+        
+        switch annotation.subtitle {
+            
+        case "Bardzo zły":
+            annotationView.markerTintColor = colors.darkRed
+        case "Zły":
+            annotationView.markerTintColor = colors.red
+        case "Dostateczny":
+            annotationView.markerTintColor = colors.orange
+        case "Umiarkowany":
+            annotationView.markerTintColor = colors.yellow
+        case "Dobry":
+            annotationView.markerTintColor = colors.lime
+        case "Bardzo dobry":
+            annotationView.markerTintColor = colors.green
+        default :
+            annotationView.markerTintColor = colors.gray
+        }
+        
+        return annotationView
     }
 
 }
@@ -94,3 +120,4 @@ private extension MKMapView {
         setRegion(coordinateRegion, animated: true)
     }
 }
+

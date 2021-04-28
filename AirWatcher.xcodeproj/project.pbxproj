@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E28D97062004CD4870B8A26 /* Pods_AirWatcher_AirWatcherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AA7B7F34EBFCA5E4290373 /* Pods_AirWatcher_AirWatcherUITests.framework */; };
 		CF3EC8A1C37FEB84C202B951 /* Pods_AirWatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EBA34AAAC9B9AC4D81FEBCD /* Pods_AirWatcher.framework */; };
+		D56E3D56263752E40004B2A2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56E3D55263752E40004B2A2 /* Colors.swift */; };
 		D58805D025B0569E002FCC0A /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58805CF25B0569E002FCC0A /* FavoriteItem.swift */; };
 		D5A63C7E2561401300F2B826 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A63C7D2561401300F2B826 /* AppDelegate.swift */; };
 		D5A63C802561401300F2B826 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A63C7F2561401300F2B826 /* SceneDelegate.swift */; };
@@ -66,6 +67,7 @@
 		85B2A766823693CC66529D41 /* Pods_AirWatcher_AirWatcherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirWatcher_AirWatcherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05E35412E8124E6C39DB0D1 /* Pods-AirWatcher-AirWatcherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirWatcher-AirWatcherUITests.release.xcconfig"; path = "Target Support Files/Pods-AirWatcher-AirWatcherUITests/Pods-AirWatcher-AirWatcherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B810F1844D8FBC9502F14541 /* Pods-AirWatcher-AirWatcherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirWatcher-AirWatcherTests.debug.xcconfig"; path = "Target Support Files/Pods-AirWatcher-AirWatcherTests/Pods-AirWatcher-AirWatcherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D56E3D55263752E40004B2A2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D58805CF25B0569E002FCC0A /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		D5A63C7A2561401200F2B826 /* AirWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirWatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A63C7D2561401300F2B826 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D56E3D54263752D00004B2A2 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				D56E3D55263752E40004B2A2 /* Colors.swift */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
 		D5A63C712561401200F2B826 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +192,7 @@
 		D5A63C7C2561401200F2B826 /* AirWatcher */ = {
 			isa = PBXGroup;
 			children = (
+				D56E3D54263752D00004B2A2 /* Others */,
 				D5E3DFA325E7A98A006E55B8 /* Map */,
 				D5FD36E9256EC1D4008FD8F6 /* Add */,
 				D5A63CC02561541500F2B826 /* AirWatcher.entitlements */,
@@ -557,6 +568,7 @@
 				D5E3DFA725E7B2A9006E55B8 /* ChartView.swift in Sources */,
 				D5B3AFE52623094500D941E1 /* AirQualityIndex.swift in Sources */,
 				D5EC89B9261F686D009E3CAA /* MapViewModel.swift in Sources */,
+				D56E3D56263752E40004B2A2 /* Colors.swift in Sources */,
 				D5A63CBB25614F1000F2B826 /* FavoriteViewModel.swift in Sources */,
 				D58805D025B0569E002FCC0A /* FavoriteItem.swift in Sources */,
 				D5A63C802561401300F2B826 /* SceneDelegate.swift in Sources */,
