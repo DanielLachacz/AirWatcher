@@ -33,7 +33,6 @@ class StartViewController: UIViewController {
             if error == false {
                 SVProgressHUD.dismiss()
                 self.showTabBarController()
-                print("START FALSE")
             } else if error == true {
                 print("ERROR fetchData StartViewController: \(error)")
             }

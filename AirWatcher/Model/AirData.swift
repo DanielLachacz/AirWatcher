@@ -8,12 +8,11 @@
 
 import Foundation.NSURL
 import RealmSwift
-import Realm
 
-class Data: Object, Decodable {
+class AirData: Object, Decodable, Identifiable {
     
     @objc dynamic var id: Int = 0
-    @objc dynamic var stationId: Int = 0 //indifaction during the making of the new FavoriteItem
+    @objc dynamic var stationId: Int = 0
     @objc dynamic var key: String = ""
     var values = List<Value>()
     

@@ -13,7 +13,7 @@ protocol APIServiceProtocol {
 
     func fetchStations(url: URL) -> Observable<[Station]>
     func fetchSensors(url: URL) -> Observable<[Sensor]>
-    func fetchData(url: URL) -> Observable<Data>
+    func fetchData(url: URL) -> Observable<AirData>
     func fetchAirQualityIndex(url: URL) -> Observable<AirQualityIndex>
 }
 
@@ -74,7 +74,7 @@ final class APIService: APIServiceProtocol {
             }
     }
     
-    func fetchData(url: URL) -> Observable<Data> {
+    func fetchData(url: URL) -> Observable<AirData> {
         
         return Observable.create { observer -> Disposable in
         
@@ -87,7 +87,7 @@ final class APIService: APIServiceProtocol {
         }
             
             do {
-                let data = try JSONDecoder().decode(Data.self, from: data)
+                let data = try JSONDecoder().decode(AirData.self, from: data)
                 observer.onNext(data)
             } catch {
                 observer.onError(error)

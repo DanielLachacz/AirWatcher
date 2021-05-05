@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E28D97062004CD4870B8A26 /* Pods_AirWatcher_AirWatcherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AA7B7F34EBFCA5E4290373 /* Pods_AirWatcher_AirWatcherUITests.framework */; };
 		CF3EC8A1C37FEB84C202B951 /* Pods_AirWatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EBA34AAAC9B9AC4D81FEBCD /* Pods_AirWatcher.framework */; };
+		D553C6FA263C921C007E6F4D /* FavoriteViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D553C6F9263C921C007E6F4D /* FavoriteViewModelTests.swift */; };
 		D56E3D56263752E40004B2A2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56E3D55263752E40004B2A2 /* Colors.swift */; };
 		D58805D025B0569E002FCC0A /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58805CF25B0569E002FCC0A /* FavoriteItem.swift */; };
 		D5A63C7E2561401300F2B826 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A63C7D2561401300F2B826 /* AppDelegate.swift */; };
@@ -30,13 +31,15 @@
 		D5AC62E125751AA800D42650 /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC62E025751AA800D42650 /* AddViewModel.swift */; };
 		D5AE4E69262219A500279CC1 /* MapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AE4E68262219A500279CC1 /* MapItem.swift */; };
 		D5B3AFE52623094500D941E1 /* AirQualityIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B3AFE42623094500D941E1 /* AirQualityIndex.swift */; };
+		D5BF2C5C2641BDAF00893530 /* PersistenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF2C5B2641BDAF00893530 /* PersistenceServiceTests.swift */; };
 		D5D99E9325765B2400E20A07 /* AddItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D99E9225765B2400E20A07 /* AddItem.swift */; };
+		D5DE7538263DE70000FA9024 /* MockPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE7537263DE70000FA9024 /* MockPersistenceService.swift */; };
 		D5E3DFA525E7A9BA006E55B8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3DFA425E7A9BA006E55B8 /* MapViewController.swift */; };
 		D5E3DFA725E7B2A9006E55B8 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3DFA625E7B2A9006E55B8 /* ChartView.swift */; };
 		D5EC2C9D2567CDF7008C82D9 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC2C9C2567CDF7008C82D9 /* Sensor.swift */; };
 		D5EC89B9261F686D009E3CAA /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC89B8261F686D009E3CAA /* MapViewModel.swift */; };
 		D5FB05EA2577FBB200D0160B /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FB05E92577FBB200D0160B /* AddTableViewCell.swift */; };
-		D5FD36E8256EBE78008FD8F6 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD36E7256EBE78008FD8F6 /* Data.swift */; };
+		D5FD36E8256EBE78008FD8F6 /* AirData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD36E7256EBE78008FD8F6 /* AirData.swift */; };
 		D5FD36EB256EC235008FD8F6 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD36EA256EC235008FD8F6 /* AddViewController.swift */; };
 		F5E922AC8BF003CE0C72C952 /* Pods_AirWatcher_AirWatcherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85B2A766823693CC66529D41 /* Pods_AirWatcher_AirWatcherTests.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +70,7 @@
 		85B2A766823693CC66529D41 /* Pods_AirWatcher_AirWatcherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirWatcher_AirWatcherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05E35412E8124E6C39DB0D1 /* Pods-AirWatcher-AirWatcherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirWatcher-AirWatcherUITests.release.xcconfig"; path = "Target Support Files/Pods-AirWatcher-AirWatcherUITests/Pods-AirWatcher-AirWatcherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B810F1844D8FBC9502F14541 /* Pods-AirWatcher-AirWatcherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirWatcher-AirWatcherTests.debug.xcconfig"; path = "Target Support Files/Pods-AirWatcher-AirWatcherTests/Pods-AirWatcher-AirWatcherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D553C6F9263C921C007E6F4D /* FavoriteViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModelTests.swift; sourceTree = "<group>"; };
 		D56E3D55263752E40004B2A2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D58805CF25B0569E002FCC0A /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		D5A63C7A2561401200F2B826 /* AirWatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirWatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,13 +99,15 @@
 		D5AC62E025751AA800D42650 /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
 		D5AE4E68262219A500279CC1 /* MapItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItem.swift; sourceTree = "<group>"; };
 		D5B3AFE42623094500D941E1 /* AirQualityIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityIndex.swift; sourceTree = "<group>"; };
+		D5BF2C5B2641BDAF00893530 /* PersistenceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceServiceTests.swift; sourceTree = "<group>"; };
 		D5D99E9225765B2400E20A07 /* AddItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItem.swift; sourceTree = "<group>"; };
+		D5DE7537263DE70000FA9024 /* MockPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersistenceService.swift; sourceTree = "<group>"; };
 		D5E3DFA425E7A9BA006E55B8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D5E3DFA625E7B2A9006E55B8 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		D5EC2C9C2567CDF7008C82D9 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
 		D5EC89B8261F686D009E3CAA /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		D5FB05E92577FBB200D0160B /* AddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
-		D5FD36E7256EBE78008FD8F6 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		D5FD36E7256EBE78008FD8F6 /* AirData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirData.swift; sourceTree = "<group>"; };
 		D5FD36EA256EC235008FD8F6 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		FFF7C469DCB3ADCD15249681 /* Pods-AirWatcher-AirWatcherUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirWatcher-AirWatcherUITests.debug.xcconfig"; path = "Target Support Files/Pods-AirWatcher-AirWatcherUITests/Pods-AirWatcher-AirWatcherUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +223,9 @@
 			children = (
 				D5A63C942561401600F2B826 /* AirWatcherTests.swift */,
 				D5A63C962561401600F2B826 /* Info.plist */,
+				D553C6F9263C921C007E6F4D /* FavoriteViewModelTests.swift */,
+				D5DE7537263DE70000FA9024 /* MockPersistenceService.swift */,
+				D5BF2C5B2641BDAF00893530 /* PersistenceServiceTests.swift */,
 			);
 			path = AirWatcherTests;
 			sourceTree = "<group>";
@@ -252,7 +261,7 @@
 			children = (
 				D5A63CB22561499500F2B826 /* Station.swift */,
 				D5EC2C9C2567CDF7008C82D9 /* Sensor.swift */,
-				D5FD36E7256EBE78008FD8F6 /* Data.swift */,
+				D5FD36E7256EBE78008FD8F6 /* AirData.swift */,
 				D5D99E9225765B2400E20A07 /* AddItem.swift */,
 				D58805CF25B0569E002FCC0A /* FavoriteItem.swift */,
 				D5AE4E68262219A500279CC1 /* MapItem.swift */,
@@ -563,7 +572,7 @@
 				D5A63C7E2561401300F2B826 /* AppDelegate.swift in Sources */,
 				D5A63CBD25614F8100F2B826 /* FavoriteViewController.swift in Sources */,
 				D5A63CB525614A4500F2B826 /* PersistenceService.swift in Sources */,
-				D5FD36E8256EBE78008FD8F6 /* Data.swift in Sources */,
+				D5FD36E8256EBE78008FD8F6 /* AirData.swift in Sources */,
 				D5A63CB02561494000F2B826 /* APIService.swift in Sources */,
 				D5E3DFA725E7B2A9006E55B8 /* ChartView.swift in Sources */,
 				D5B3AFE52623094500D941E1 /* AirQualityIndex.swift in Sources */,
@@ -585,7 +594,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D553C6FA263C921C007E6F4D /* FavoriteViewModelTests.swift in Sources */,
+				D5BF2C5C2641BDAF00893530 /* PersistenceServiceTests.swift in Sources */,
 				D5A63C952561401600F2B826 /* AirWatcherTests.swift in Sources */,
+				D5DE7538263DE70000FA9024 /* MockPersistenceService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

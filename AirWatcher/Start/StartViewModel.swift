@@ -20,8 +20,8 @@ class StartViewModel: ObservableObject {
     var addItemArray = [AddItem]()
     var addItemArray2 = [AddItem]()
     var sensorItemArray = [SensorItem]()
-    var dataArray = [Data]()
-    var dataArray2 = [Data]()
+    var dataArray = [AirData]()
+    var dataArray2 = [AirData]()
     var dataItemArray = [DataItem]()
     var airQualityIndexArray = [AirQualityIndex]()
     
@@ -135,7 +135,7 @@ class StartViewModel: ObservableObject {
         let stationIds = add.map{aStation in aStation.sensors.map{$0.stationId}}.flatMap{$0}
         var countIndex = [Int]()
         var countId = [Int]()
-        var dataArray = [Data]()
+        var dataArray = [AirData]()
         
         for (index, x) in sensorIds {
             guard let giosDataURL = URL(string: "https://api.gios.gov.pl/pjp-api/rest/data/getData/\(x)") else {
@@ -151,7 +151,7 @@ class StartViewModel: ObservableObject {
                 onNext: { (jsonResponse) in
                     self.dataArray += [jsonResponse]
                     let valuesArray = Array(jsonResponse.values)
-                    let data = Data(id: x, stationId: stationId, key: jsonResponse.key, values: valuesArray)
+                    let data = AirData(id: x, stationId: stationId, key: jsonResponse.key, values: valuesArray)
                       
                     dataArray.append(data)
                     

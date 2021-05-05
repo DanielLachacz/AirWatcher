@@ -7,8 +7,6 @@
 //
 
 import RealmSwift
-import RxSwift
-import RxCocoa
 
 enum RuntimeError: Error {
     
@@ -25,8 +23,8 @@ protocol PersistenceServiceProtocol {
     func addAddItems(addItems: [AddItem]) throws
     func deleteAddItem(addItem: AddItem) throws
     func fetchAddItems() throws -> Results<AddItem>
-    func addData(data: [Data]) throws
-    func fetchData() throws -> Results<Data>
+    func addData(data: [AirData]) throws
+    func fetchData() throws -> Results<AirData>
     func addAirQualityIndex(air: [AirQualityIndex]) throws
     func fetchAirQualityIndex() throws -> Results<AirQualityIndex>
 }
@@ -76,8 +74,8 @@ final class PersistenceService: PersistenceServiceProtocol {
         }
     }
     
-    func addData(data: [Data]) throws {
-        let objects = data.map { Data(value: $0)}
+    func addData(data: [AirData]) throws {
+        let objects = data.map { AirData(value: $0)}
         autoreleasepool {
             do {
                 self.realm = try Realm()
@@ -194,10 +192,10 @@ final class PersistenceService: PersistenceServiceProtocol {
         }
       }
    
-    func fetchData() throws -> Results<Data> {
+    func fetchData() throws -> Results<AirData> {
         do {
             realm = try Realm()
-            return realm!.objects(Data.self)
+            return realm!.objects(AirData.self)
         }
         catch {
             throw RuntimeError.NoRealmSet

@@ -78,13 +78,13 @@ class AddViewModel {
         }
         addItems.append(contentsOf: addItem)
         
-        //DZIALA!!!
         addItem.forEach { item in
             guard let index = addList2.firstIndex(where: { $0.id == item.id})
                 else {
                     print("Failed to find the SavedAddItem for the AddItem \(item.id)")
                     return
             }
+            print("index: \( index)")
             addItems[index + 1].added = trueValue
         }
         

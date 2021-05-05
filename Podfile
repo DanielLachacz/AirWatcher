@@ -10,15 +10,14 @@ target 'AirWatcher' do
   pod 'RxCocoa', '~> 5'
   pod 'RealmSwift'
   pod "RxRealm"
-#  pod 'Charts'
-#  pod 'ChartsRealm'
   pod 'RxMKMapView'
 
   # Pods for AirWatcher
 
   target 'AirWatcherTests' do
-     pod 'RxBlocking', '~> 5'
-       pod 'RxTest', '~> 5'
+    use_frameworks!
+    pod 'RxBlocking', '~> 5'
+    pod 'RxTest', '~> 5'
   end
 
   target 'AirWatcherUITests' do

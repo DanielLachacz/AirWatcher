@@ -19,7 +19,7 @@ class FavoriteViewModel: ObservableObject {
     var addArray = [AddItem]()
     var stationArray = [Station]()
     var sensorArray = [Sensor]()
-    var dataArray = [Data]()
+    var dataArray = [AirData]()
     var favoriteItemArrayBS = BehaviorSubject<[FavoriteItem]>(value: []) //usun w tym
     let disposeBag = DisposeBag()
     public let saveingError: PublishSubject<Bool> = PublishSubject()
@@ -30,7 +30,7 @@ class FavoriteViewModel: ObservableObject {
     }
     
     func fetchSavedAddItemsAndData() {
-        var dataArray = [Data]()
+        var dataArray = [AirData]()
         do {
             addArray = try persistenceService.fetchAddItems().toArray(ofType: AddItem.self)
         } catch  {
@@ -38,14 +38,14 @@ class FavoriteViewModel: ObservableObject {
         }
         
         do {
-            dataArray = try persistenceService.fetchData().toArray(ofType: Data.self)
+            dataArray = try persistenceService.fetchData().toArray(ofType: AirData.self)
         } catch {
             print("ERROR fetchAddItemsAndData FavoriteViewModel")
         }
         setFavoriteSensors(addArray: addArray, dataArray: dataArray)
     }
     
-    func setFavoriteSensors(addArray: [AddItem], dataArray: [Data]) {
+    func setFavoriteSensors(addArray: [AddItem], dataArray: [AirData]) {
         var favoriteSensorArray = [FavoriteSensor]()
         let addSensors = addArray.flatMap{$0.sensors}
         var favoriteItemArray = [FavoriteItem]()
@@ -87,7 +87,7 @@ class FavoriteViewModel: ObservableObject {
         
     }
     
-    func setFavoriteItems(data: [Data]) {
+    func setFavoriteItems(data: [AirData]) {
         var addList2 = [AddItem]()
         var favoriteItems = [FavoriteItem]()
         
@@ -222,7 +222,7 @@ class FavoriteViewModel: ObservableObject {
         let stationIds = add.map{aStation in aStation.sensors.map{$0.stationId}}.flatMap{$0}
         var countIndex = [Int]()
         var countId = [Int]()
-        var dataArray = [Data]()
+        var dataArray = [AirData]()
         
         for (index, x) in sensorIds {
             guard let giosDataURL = URL(string: "https://api.gios.gov.pl/pjp-api/rest/data/getData/\(x)") else {
@@ -238,7 +238,7 @@ class FavoriteViewModel: ObservableObject {
                 onNext: { (jsonResponse) in
                     self.dataArray += [jsonResponse]
                     let valuesArray = Array(jsonResponse.values)
-                    let data = Data(id: x, stationId: stationId, key: jsonResponse.key, values: valuesArray)
+                    let data = AirData(id: x, stationId: stationId, key: jsonResponse.key, values: valuesArray)
                       
                     dataArray.append(data)
                     
