@@ -153,12 +153,27 @@ final class PersistenceService: PersistenceServiceProtocol {
         }
     }
     
-    func deleteAddItem(addItem: AddItem){
-        let realm = try! Realm()
-        try! realm.write {
-            if let itemToDelete = realm.object(ofType: AddItem.self, forPrimaryKey: addItem.id) {
-                realm.delete(itemToDelete)
+    func deleteAddItem(addItem: AddItem) throws {
+//        let realm = try! Realm()
+//        try! realm.write {
+//            if let itemToDelete = realm.object(ofType: AddItem.self, forPrimaryKey: addItem.id) {
+//                realm.delete(itemToDelete)
+//            }
+//        }
+        if addItem.id != nil {
+        do {
+            let itemToDelete = realm!.object(ofType: AddItem.self, forPrimaryKey: addItem.id)
+            
+            realm = try Realm()
+            try! realm!.write
+            {
+                realm!.delete(itemToDelete!)
             }
+        }
+        catch
+        {
+            throw RuntimeError.NoRealmSet
+        }
         }
     }
     

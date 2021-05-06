@@ -181,7 +181,7 @@ class PersistenceServiceTests: XCTestCase {
             try service.addAddItems(addItems: addItemArray)
             let addItems = service.realm?.objects(AddItem.self)
             
-            XCTAssertEqual(addItems?.count, 2)
+            XCTAssertEqual(addItems?.count, 1)
         }
         catch RuntimeError.NoRealmSet {
            XCTAssert(false, "PERSISTENCE SERVICE: No Realm Database addAddItems")
@@ -190,5 +190,76 @@ class PersistenceServiceTests: XCTestCase {
         {
            XCTAssert(false, "\(error.localizedDescription)")
         }
+    }
+    
+    func test_deleteAddItem() {
+        do {
+            let addItem = AddItem(id: 1, stationId: 1, cityName: "1", addressStreet: "1", added: RealmOptional<Bool>(false), sensor: [SensorItem]())
+            
+            try service.addAddItem(addItem: addItem)
+            let addItems = service.realm?.objects(AddItem.self)
+            XCTAssertEqual(addItems?.count, 1)
+            
+            try service.deleteAddItem(addItem: addItem)
+            let addItemsAfterDelete = service.realm?.objects(AddItem.self)
+            XCTAssertEqual(addItemsAfterDelete?.count, 0)
+            
+        }
+        catch RuntimeError.NoRealmSet
+        {
+            XCTAssert(false)
+        }
+        catch let error as NSError
+        {
+           XCTAssert(false, "\(error.localizedDescription)")
+        }
+    }
+    
+    func test_fetchAddItems() {
+        let addItem1 = AddItem(id: 1, stationId: 1, cityName: "1", addressStreet: "1", added: RealmOptional<Bool>(false), sensor: [SensorItem]())
+        let addItem2 = AddItem(id: 2, stationId: 2, cityName: "2", addressStreet: "2", added: RealmOptional<Bool>(false), sensor: [SensorItem]())
+        
+        try! service.addAddItem(addItem: addItem1)
+        try! service.addAddItem(addItem: addItem2)
+        
+        let addItems = try! service.fetchAddItems()
+        XCTAssertEqual(addItems.count, 2)
+    }
+    
+    func test_fetchStations() {
+        let stationArray = [Station(id: 1, stationName: "1", gegrLat: "1", gegrLon: "1", city: City(), addressStreet: "1"), Station(id: 2, stationName: "2", gegrLat: "2", gegrLon: "2", city: City(), addressStreet: "2")]
+        
+        try! service.addStations(stations: stationArray)
+        
+        let stations = try! service.fetchStations()
+        XCTAssertEqual(stations.count, 2)
+    }
+    
+    func test_fetchSensors() {
+        let sensorArray = [Sensor(id: 1, stationId: 1, param: Param()), Sensor(id: 2, stationId: 2, param: Param())]
+        
+        try! service.addSensors(sensors: sensorArray)
+        
+        let sensors = try! service.fetchSensors()
+        XCTAssertEqual(sensors.count, 2)
+    }
+    
+    func test_FetchData() {
+        let dataArray = [AirData(id: 1, stationId: 1, key: "1", values: [Value]()), AirData(id: 2, stationId: 2, key: "2", values: [Value]())]
+        
+        try! service.addData(data: dataArray)
+        
+        let data = try! service.fetchData()
+        XCTAssertEqual(data.count, 2)
+    }
+    
+    func test_fetchAirQualityIndex() {
+        let airQualityIndexArray = [AirQualityIndex(id: 1, stCalcDate: "1", stIndexLevel: StIndexLevel()),
+        AirQualityIndex(id: 2, stCalcDate: "2", stIndexLevel: StIndexLevel())]
+        
+        try! service.addAirQualityIndex(air: airQualityIndexArray)
+        let air = try! service.fetchAirQualityIndex()
+        
+        XCTAssertEqual(air.count, 2)
     }
 }
