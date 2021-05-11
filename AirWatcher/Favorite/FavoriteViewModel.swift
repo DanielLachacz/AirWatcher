@@ -22,7 +22,8 @@ class FavoriteViewModel: ObservableObject {
     var dataArray = [AirData]()
     var favoriteItemArrayBS = BehaviorSubject<[FavoriteItem]>(value: []) //usun w tym
     let disposeBag = DisposeBag()
-    public let saveingError: PublishSubject<Bool> = PublishSubject()
+    public var saveingError: PublishSubject<Bool> = PublishSubject()
+    public var error: PublishSubject<Bool> = PublishSubject()
     
     init(apiService: APIServiceProtocol = APIService(), persistenceService: PersistenceServiceProtocol = PersistenceService()) {
         self.apiService = apiService
@@ -33,19 +34,23 @@ class FavoriteViewModel: ObservableObject {
         var dataArray = [AirData]()
         do {
             addArray = try persistenceService.fetchAddItems().toArray(ofType: AddItem.self)
+            self.error.onNext(false)
         } catch  {
+            self.error.onNext(true)
             print("ERROR fetchAddItemsAndData FavoriteViewModel")
         }
         
         do {
             dataArray = try persistenceService.fetchData().toArray(ofType: AirData.self)
+            self.error.onNext(false)
         } catch {
+            self.error.onNext(true)
             print("ERROR fetchAddItemsAndData FavoriteViewModel")
         }
-        setFavoriteSensors(addArray: addArray, dataArray: dataArray)
+        setFavoriteItems(addArray: addArray, dataArray: dataArray)
     }
     
-    func setFavoriteSensors(addArray: [AddItem], dataArray: [AirData]) {
+    func setFavoriteItems(addArray: [AddItem], dataArray: [AirData]) {
         var favoriteSensorArray = [FavoriteSensor]()
         let addSensors = addArray.flatMap{$0.sensors}
         var favoriteItemArray = [FavoriteItem]()
@@ -87,22 +92,22 @@ class FavoriteViewModel: ObservableObject {
         
     }
     
-    func setFavoriteItems(data: [AirData]) {
-        var addList2 = [AddItem]()
-        var favoriteItems = [FavoriteItem]()
-        
-        do {
-                addList2 = try persistenceService.fetchAddItems().toArray(ofType: AddItem.self)
-        } catch {
-                   print("ERROR setFavoriteItems FavoriteViewModel")
-        }
-       
-        let favorite = addList2.map { add in
-            FavoriteItem(id: add.stationId, cityName: add.cityName, addressStreet: add.addressStreet, sensors: [])
-        }
-        favoriteItems.append(contentsOf: favorite)
-        
-    }
+//    func setFavoriteItems(data: [AirData]) {
+//        var addList2 = [AddItem]()
+//        var favoriteItems = [FavoriteItem]()
+//
+//        do {
+//                addList2 = try persistenceService.fetchAddItems().toArray(ofType: AddItem.self)
+//        } catch {
+//                   print("ERROR setFavoriteItems FavoriteViewModel")
+//        }
+//
+//        let favorite = addList2.map { add in
+//            FavoriteItem(id: add.stationId, cityName: add.cityName, addressStreet: add.addressStreet, sensors: [])
+//        }
+//        favoriteItems.append(contentsOf: favorite)
+//
+//    }
     
     func deleteAddItem(indexPath: IndexPath) {
         //Find StationItem in the list and delete from the database

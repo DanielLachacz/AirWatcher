@@ -39,12 +39,11 @@ class SensorItem: Object {
     @objc dynamic var param: ParamItem?
     @objc dynamic var data: DataItem?
     
-    convenience init(id: Int, stationId: Int, param: ParamItem/*, data: DataItem*/) {
+    convenience init(id: Int, stationId: Int, param: ParamItem) {
         self.init()
         self.id = id
         self.stationId = stationId
         self.param = param
-       // self.data = data
     }
     
 }

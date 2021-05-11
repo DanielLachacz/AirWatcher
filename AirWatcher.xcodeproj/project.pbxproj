@@ -31,9 +31,9 @@
 		D5AC62E125751AA800D42650 /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC62E025751AA800D42650 /* AddViewModel.swift */; };
 		D5AE4E69262219A500279CC1 /* MapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AE4E68262219A500279CC1 /* MapItem.swift */; };
 		D5B3AFE52623094500D941E1 /* AirQualityIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B3AFE42623094500D941E1 /* AirQualityIndex.swift */; };
-		D5BF2C5C2641BDAF00893530 /* PersistenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BF2C5B2641BDAF00893530 /* PersistenceServiceTests.swift */; };
+		D5D1649F2645AE2300E8BFCF /* PersistenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D1649E2645AE2300E8BFCF /* PersistenceServiceTests.swift */; };
+		D5D164A12645AE6600E8BFCF /* MockPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D164A02645AE6600E8BFCF /* MockPersistenceService.swift */; };
 		D5D99E9325765B2400E20A07 /* AddItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D99E9225765B2400E20A07 /* AddItem.swift */; };
-		D5DE7538263DE70000FA9024 /* MockPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE7537263DE70000FA9024 /* MockPersistenceService.swift */; };
 		D5E3DFA525E7A9BA006E55B8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3DFA425E7A9BA006E55B8 /* MapViewController.swift */; };
 		D5E3DFA725E7B2A9006E55B8 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E3DFA625E7B2A9006E55B8 /* ChartView.swift */; };
 		D5EC2C9D2567CDF7008C82D9 /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EC2C9C2567CDF7008C82D9 /* Sensor.swift */; };
@@ -99,9 +99,9 @@
 		D5AC62E025751AA800D42650 /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
 		D5AE4E68262219A500279CC1 /* MapItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItem.swift; sourceTree = "<group>"; };
 		D5B3AFE42623094500D941E1 /* AirQualityIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityIndex.swift; sourceTree = "<group>"; };
-		D5BF2C5B2641BDAF00893530 /* PersistenceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceServiceTests.swift; sourceTree = "<group>"; };
+		D5D1649E2645AE2300E8BFCF /* PersistenceServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistenceServiceTests.swift; path = ../../../../.Trash/PersistenceServiceTests.swift; sourceTree = "<group>"; };
+		D5D164A02645AE6600E8BFCF /* MockPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersistenceService.swift; sourceTree = "<group>"; };
 		D5D99E9225765B2400E20A07 /* AddItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItem.swift; sourceTree = "<group>"; };
-		D5DE7537263DE70000FA9024 /* MockPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersistenceService.swift; sourceTree = "<group>"; };
 		D5E3DFA425E7A9BA006E55B8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D5E3DFA625E7B2A9006E55B8 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		D5EC2C9C2567CDF7008C82D9 /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
@@ -221,11 +221,11 @@
 		D5A63C932561401600F2B826 /* AirWatcherTests */ = {
 			isa = PBXGroup;
 			children = (
+				D5D1649E2645AE2300E8BFCF /* PersistenceServiceTests.swift */,
 				D5A63C942561401600F2B826 /* AirWatcherTests.swift */,
 				D5A63C962561401600F2B826 /* Info.plist */,
 				D553C6F9263C921C007E6F4D /* FavoriteViewModelTests.swift */,
-				D5DE7537263DE70000FA9024 /* MockPersistenceService.swift */,
-				D5BF2C5B2641BDAF00893530 /* PersistenceServiceTests.swift */,
+				D5D164A02645AE6600E8BFCF /* MockPersistenceService.swift */,
 			);
 			path = AirWatcherTests;
 			sourceTree = "<group>";
@@ -595,9 +595,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D553C6FA263C921C007E6F4D /* FavoriteViewModelTests.swift in Sources */,
-				D5BF2C5C2641BDAF00893530 /* PersistenceServiceTests.swift in Sources */,
+				D5D1649F2645AE2300E8BFCF /* PersistenceServiceTests.swift in Sources */,
 				D5A63C952561401600F2B826 /* AirWatcherTests.swift in Sources */,
-				D5DE7538263DE70000FA9024 /* MockPersistenceService.swift in Sources */,
+				D5D164A12645AE6600E8BFCF /* MockPersistenceService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

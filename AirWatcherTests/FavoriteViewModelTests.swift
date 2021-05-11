@@ -19,14 +19,11 @@ class FavoriteViewModelTests: XCTestCase {
     var scheduler: TestScheduler!
     var disposeBag: DisposeBag!
     let service = PersistenceService()
-    //var mockPersistenceService: MockPersistenceService!
     
     override func setUp() {
-       // mockPersistenceService = MockPersistenceService()
         self.scheduler = TestScheduler(initialClock: 0)
         self.disposeBag = DisposeBag()
         self.viewModel = FavoriteViewModel()
-        //viewModel = .init()
         Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
         let realm = try! Realm()
         service.realm = realm
@@ -40,22 +37,55 @@ class FavoriteViewModelTests: XCTestCase {
     }
 
     func test_fetchSavedAddItems_AndData() {
-        let addItemArray = [AddItem(id: 1, stationId: 1, cityName: "1", addressStreet: "1", added: RealmOptional<Bool>(false), sensor: [SensorItem(id: 1, stationId: 1, param: ParamItem(paramName: "1", paramFormula: "1", paramCode: "1", idParam: 1))]), AddItem(id: 2, stationId: 2, cityName: "2", addressStreet: "2", added: RealmOptional<Bool>(false), sensor: [SensorItem(id: 2, stationId: 2, param: ParamItem(paramName: "2", paramFormula: "2", paramCode: "2", idParam: 2))])]
-        
-        let airDataArray = [AirData](arrayLiteral: AirData(id: 1, stationId: 1, key: "Key1", values: [Value(date: "1", value: RealmOptional<Double>(1.0))]), AirData(id: 2, stationId: 2, key: "Key2", values: [Value(date: "2", value: RealmOptional<Double>(2.0))]))
+         let addItemArray = [AddItem(id: 1, stationId: 1, cityName: "1", addressStreet: "1", added: RealmOptional<Bool>(false), sensor: [SensorItem]()), AddItem(id: 2, stationId: 2, cityName: "2", addressStreet: "2", added: RealmOptional<Bool>(false), sensor: [SensorItem]()), AddItem(id: 3, stationId: 3, cityName: "3", addressStreet: "3", added: RealmOptional<Bool>(false), sensor: [SensorItem]())]
         
         try! service.addAddItems(addItems: addItemArray)
-        try! service.addData(data: airDataArray)
         
-        let items = try! service.fetchAddItems()
-        let datas = try! service.fetchData()
+        let dataArray = [AirData(id: 1, stationId: 1, key: "1", values: [Value]()), AirData(id: 2, stationId: 2, key: "2", values: [Value]()), AirData(id: 3, stationId: 3, key: "3", values: [Value]())]
         
-        XCTAssertEqual(items.count, 2)
-        XCTAssertEqual(datas.count, 2)
+        try! service.addData(data: dataArray)
+        
+        let first = scheduler.createObserver(Bool.self)
+        let second = scheduler.createObserver(Bool.self)
+        
+        viewModel.error
+            .bind(to: first)
+            .disposed(by: disposeBag)
+        
+        viewModel.error
+            .bind(to: second)
+            .disposed(by: disposeBag)
+        
+        viewModel.fetchSavedAddItemsAndData()
+        
+        //XCTAssertEqual(viewModel.addArray.count, 3)
+        //XCTAssertTrue(first)
+        //XCTAssertEqual(first, false)
+        XCTAssertRecordedElements(first.events, [true])
+        XCTAssertRecordedElements(first.events, [true])
     }
     
-    func test_fetchSavedAddItems_AndData_WithError() {
+    func test_SetFavoriteItems() {
+        let addItemArray = [AddItem(id: 1, stationId: 1, cityName: "1", addressStreet: "1", added: RealmOptional<Bool>(false), sensor: [SensorItem(id: 1, stationId: 1, param: ParamItem())]), AddItem(id: 2, stationId: 2, cityName: "2", addressStreet: "2", added: RealmOptional<Bool>(false), sensor: [SensorItem(id: 2, stationId: 2, param: ParamItem())]), AddItem(id: 3, stationId: 3, cityName: "3", addressStreet: "3", added: RealmOptional<Bool>(false), sensor: [SensorItem(id: 3, stationId: 3, param: ParamItem())])]
         
+        let dataArray = [AirData(id: 1, stationId: 1, key: "1", values: [Value]()), AirData(id: 2, stationId: 2, key: "2", values: [Value]()), AirData(id: 3, stationId: 3, key: "3", values: [Value]())]
         
+        viewModel.setFavoriteItems(addArray: addItemArray, dataArray: dataArray)
+        
+        let result = try! viewModel.favoriteItemArrayBS.asObserver().value()
+        
+        XCTAssertEqual(result.count, 3)
+    }
+    
+    func test_SetFavoriteItems_WithError() {
+        let addItemArray = [AddItem(id: 1, stationId: 1, cityName: "1", addressStreet: "1", added: RealmOptional<Bool>(false), sensor: [SensorItem(id: 0, stationId: 1, param: ParamItem())]), AddItem(id: 2, stationId: 0, cityName: "2", addressStreet: "2", added: RealmOptional<Bool>(false), sensor: [SensorItem(id: 0, stationId: 0, param: ParamItem())]), AddItem(id: 3, stationId: 3, cityName: "3", addressStreet: "3", added: RealmOptional<Bool>(false), sensor: [SensorItem(id: 0, stationId: 0, param: ParamItem())])]
+        
+        let dataArray = [AirData(id: 1, stationId: 1, key: "1", values: [Value]()), AirData(id: 2, stationId: 2, key: "2", values: [Value]()), AirData(id: 3, stationId: 3, key: "3", values: [Value]())]
+        
+        viewModel.setFavoriteItems(addArray: addItemArray, dataArray: dataArray)
+        
+        XCTAssert(true, "Failed to find a Sensor for the Data 1")
+        XCTAssert(true, "Failed to find a Sensor for the Data 2")
+        XCTAssert(true, "Failed to find a Sensor for the Data 3")
     }
 }

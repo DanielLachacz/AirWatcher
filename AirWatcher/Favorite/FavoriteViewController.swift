@@ -77,10 +77,6 @@ class FavoriteViewController: UIViewController {
             cell.cellStation = item
         }.disposed(by: disposeBag)
         
-//        stationsTableView.rx.modelSelected(AddItem.self).subscribe(onNext: { item in
-//            //print("SelectedItem: \(item.sensors)")
-//        }).disposed(by: disposeBag)
-        
         deleteStation()
     }
     
@@ -107,16 +103,9 @@ class FavoriteViewController: UIViewController {
 
 extension FavoriteViewController: UITableViewDelegate {
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         if indexPath.section == 0 {
             return 310
         }
-//        else if indexPath.section == 8 {
-//            return 260
-//        }
-//        else if indexPath.section == 9 {
-//            return 240
-//        }
         else {
             return UITableView.automaticDimension
         }
