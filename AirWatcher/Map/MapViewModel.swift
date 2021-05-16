@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import MapKit
 
-class MapViewModel: ObservableObject {
+class MapViewModel {
     
     let disposeBag = DisposeBag()
     private var apiService : APIServiceProtocol

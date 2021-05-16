@@ -11,7 +11,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class FavoriteViewModel: ObservableObject {
+class FavoriteViewModel {
     
     private var apiService : APIServiceProtocol
     private let persistenceService: PersistenceServiceProtocol
@@ -91,23 +91,6 @@ class FavoriteViewModel: ObservableObject {
         self.favoriteItemArrayBS.onNext(favoriteItemArray)
         
     }
-    
-//    func setFavoriteItems(data: [AirData]) {
-//        var addList2 = [AddItem]()
-//        var favoriteItems = [FavoriteItem]()
-//
-//        do {
-//                addList2 = try persistenceService.fetchAddItems().toArray(ofType: AddItem.self)
-//        } catch {
-//                   print("ERROR setFavoriteItems FavoriteViewModel")
-//        }
-//
-//        let favorite = addList2.map { add in
-//            FavoriteItem(id: add.stationId, cityName: add.cityName, addressStreet: add.addressStreet, sensors: [])
-//        }
-//        favoriteItems.append(contentsOf: favorite)
-//
-//    }
     
     func deleteAddItem(indexPath: IndexPath) {
         //Find StationItem in the list and delete from the database

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3E28D97062004CD4870B8A26 /* Pods_AirWatcher_AirWatcherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AA7B7F34EBFCA5E4290373 /* Pods_AirWatcher_AirWatcherUITests.framework */; };
 		CF3EC8A1C37FEB84C202B951 /* Pods_AirWatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EBA34AAAC9B9AC4D81FEBCD /* Pods_AirWatcher.framework */; };
+		D508E609264C58A6002DC0B8 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D508E608264C58A6002DC0B8 /* MockAPIService.swift */; };
+		D508E60B264C61E3002DC0B8 /* AddViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D508E60A264C61E3002DC0B8 /* AddViewModelTests.swift */; };
 		D553C6FA263C921C007E6F4D /* FavoriteViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D553C6F9263C921C007E6F4D /* FavoriteViewModelTests.swift */; };
 		D56E3D56263752E40004B2A2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56E3D55263752E40004B2A2 /* Colors.swift */; };
 		D58805D025B0569E002FCC0A /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D58805CF25B0569E002FCC0A /* FavoriteItem.swift */; };
@@ -70,6 +72,8 @@
 		85B2A766823693CC66529D41 /* Pods_AirWatcher_AirWatcherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirWatcher_AirWatcherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05E35412E8124E6C39DB0D1 /* Pods-AirWatcher-AirWatcherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirWatcher-AirWatcherUITests.release.xcconfig"; path = "Target Support Files/Pods-AirWatcher-AirWatcherUITests/Pods-AirWatcher-AirWatcherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B810F1844D8FBC9502F14541 /* Pods-AirWatcher-AirWatcherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirWatcher-AirWatcherTests.debug.xcconfig"; path = "Target Support Files/Pods-AirWatcher-AirWatcherTests/Pods-AirWatcher-AirWatcherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D508E608264C58A6002DC0B8 /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
+		D508E60A264C61E3002DC0B8 /* AddViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModelTests.swift; sourceTree = "<group>"; };
 		D553C6F9263C921C007E6F4D /* FavoriteViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModelTests.swift; sourceTree = "<group>"; };
 		D56E3D55263752E40004B2A2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D58805CF25B0569E002FCC0A /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 				D5A63C962561401600F2B826 /* Info.plist */,
 				D553C6F9263C921C007E6F4D /* FavoriteViewModelTests.swift */,
 				D5D164A02645AE6600E8BFCF /* MockPersistenceService.swift */,
+				D508E608264C58A6002DC0B8 /* MockAPIService.swift */,
+				D508E60A264C61E3002DC0B8 /* AddViewModelTests.swift */,
 			);
 			path = AirWatcherTests;
 			sourceTree = "<group>";
@@ -595,8 +601,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D553C6FA263C921C007E6F4D /* FavoriteViewModelTests.swift in Sources */,
+				D508E609264C58A6002DC0B8 /* MockAPIService.swift in Sources */,
 				D5D1649F2645AE2300E8BFCF /* PersistenceServiceTests.swift in Sources */,
 				D5A63C952561401600F2B826 /* AirWatcherTests.swift in Sources */,
+				D508E60B264C61E3002DC0B8 /* AddViewModelTests.swift in Sources */,
 				D5D164A12645AE6600E8BFCF /* MockPersistenceService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

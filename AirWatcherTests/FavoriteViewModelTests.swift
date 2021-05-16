@@ -33,7 +33,6 @@ class FavoriteViewModelTests: XCTestCase {
         disposeBag = nil
         viewModel = nil
         scheduler = nil
-        
     }
 
     func test_fetchSavedAddItems_AndData() {
